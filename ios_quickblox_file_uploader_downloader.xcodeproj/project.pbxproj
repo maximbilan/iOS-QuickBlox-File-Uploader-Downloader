@@ -14,6 +14,7 @@
 		6D64CCED1ADC395900E3D1D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D64CCEC1ADC395900E3D1D3 /* Images.xcassets */; };
 		6D64CCF01ADC395900E3D1D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D64CCEE1ADC395900E3D1D3 /* LaunchScreen.xib */; };
 		6D64CCFC1ADC395900E3D1D3 /* ios_quickblox_file_uploader_downloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D64CCFB1ADC395900E3D1D3 /* ios_quickblox_file_uploader_downloaderTests.m */; };
+		6D64CD071ADC3BE700E3D1D3 /* QuickBloxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D64CD061ADC3BE700E3D1D3 /* QuickBloxManager.m */; };
 		E3BA276399731602C05ECB65 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1D00C4C73A160684AC1EA6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		6D64CCF51ADC395900E3D1D3 /* ios_quickblox_file_uploader_downloaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ios_quickblox_file_uploader_downloaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D64CCFA1ADC395900E3D1D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D64CCFB1ADC395900E3D1D3 /* ios_quickblox_file_uploader_downloaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_quickblox_file_uploader_downloaderTests.m; sourceTree = "<group>"; };
+		6D64CD051ADC3BE700E3D1D3 /* QuickBloxManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickBloxManager.h; sourceTree = "<group>"; };
+		6D64CD061ADC3BE700E3D1D3 /* QuickBloxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBloxManager.m; sourceTree = "<group>"; };
 		8F793900782FBE63881BFCD0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +100,8 @@
 		6D64CCDE1ADC395900E3D1D3 /* ios_quickblox_file_uploader_downloader */ = {
 			isa = PBXGroup;
 			children = (
+				6D64CD051ADC3BE700E3D1D3 /* QuickBloxManager.h */,
+				6D64CD061ADC3BE700E3D1D3 /* QuickBloxManager.m */,
 				6D64CCE31ADC395900E3D1D3 /* AppDelegate.h */,
 				6D64CCE41ADC395900E3D1D3 /* AppDelegate.m */,
 				6D64CCE61ADC395900E3D1D3 /* ViewController.h */,
@@ -280,6 +285,7 @@
 			files = (
 				6D64CCE81ADC395900E3D1D3 /* ViewController.m in Sources */,
 				6D64CCE51ADC395900E3D1D3 /* AppDelegate.m in Sources */,
+				6D64CD071ADC3BE700E3D1D3 /* QuickBloxManager.m in Sources */,
 				6D64CCE21ADC395900E3D1D3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
