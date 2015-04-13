@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "QuickBloxManager.h"
 
 @interface ViewController ()
 
@@ -23,7 +24,14 @@
 {
 	[super viewWillAppear:animated];
 	
+	NSString *login = @"dusw02";
+	NSString *password = @"9h6ols7j6m7fnp1u";
 	
+	[[QuickBloxManager quickBloxManager] logInUserWithLogin:login password:password success:^{
+		NSLog(@"Login Success");
+	} failure:^(NSError *error) {
+		NSLog(@"Login Failure");
+	}];
 }
 
 - (void)didReceiveMemoryWarning {
