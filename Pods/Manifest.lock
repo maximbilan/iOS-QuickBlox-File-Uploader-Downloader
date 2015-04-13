@@ -1,0 +1,13 @@
+PODS:
+  - QuickBlox (2.2.3)
+  - STHTTPRequest (1.0.2)
+
+DEPENDENCIES:
+  - QuickBlox
+  - STHTTPRequest
+
+SPEC CHECKSUMS:
+  QuickBlox: f3a8cd60af97ee673ef589d2c884713633aefa31
+  STHTTPRequest: f4ca4e3ca31ebd9b54c134aa721ddd1711f1089d
+
+COCOAPODS: 0.36.3
