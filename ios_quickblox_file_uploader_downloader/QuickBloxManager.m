@@ -125,10 +125,9 @@
 			 update:(void (^)(float percentCompletion))update
 			failure:(void (^)(NSError *))failure
 {
-	NSMutableArray *blobs = [NSMutableArray array];
-	dispatch_semaphore_t semaphore;
+	WEAK(self);
 	
-	semaphore = dispatch_semaphore_create(0);
+	NSMutableArray *blobs = [NSMutableArray array];
 	
 	NSInteger index = 0;
 	for (NSString *fileURL in fileURLs) {
@@ -143,75 +142,50 @@
 			NSLog(@"Successfull response!");
 			[blobs addObject:blob];
 			
-			if (fileURLs.count - 1 == index) {
-				dispatch_semaphore_signal(semaphore);
+			if (blobs.count == fileURLs.count) {
+				[_self uploadBlobs:blobs fileURLs:fileURLs];
 			}
 		} errorBlock:^(QBResponse *response) {
 			NSLog(@"Response error: %@", response.error);
 			
-			if (fileURLs.count - 1 == index) {
-				dispatch_semaphore_signal(semaphore);
-			}
+			failure(response.error.error);
 		}];
 		
 		++index;
 	}
-	
-	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-	
-	if (fileURLs.count != blobs.count) {
-		failure(nil);
-		return;
-	}
-	
-	if (blobs.count > 0) {
+}
+
+- (void)uploadBlobs:(NSArray *)blobs fileURLs:(NSArray *)fileURLs
+{
+	NSInteger index = 0;
+	for (QBCBlob *blob in blobs) {
+		NSString *url = fileURLs[index];
+		STHTTPRequest *request = [STHTTPRequest requestWithURL:blob.blobObjectAccess.url];
+		request.HTTPMethod = @"POST";
 		
-		semaphore = dispatch_semaphore_create(0);
+		NSString *expires = (NSString *)blob.blobObjectAccess.expires;
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+		NSDate *dateExpires = [dateFormatter dateFromString:expires];
+		long long epochTime = [@(floor([dateExpires timeIntervalSince1970])) longLongValue];
 		
-		NSInteger index = 0;
-		for (QBCBlob *blob in blobs) {
-			NSString *url = fileURLs[index];
-			STHTTPRequest *request = [STHTTPRequest requestWithURL:blob.blobObjectAccess.url];
-			request.HTTPMethod = @"POST";
-			
-//			NSDictionary *params = @{
-//									 @"AWSAccessKeyId" : blob.blobObjectAccess.params[@""],
-//									 @"Signature" : blob.blobObjectAccess.params[@""],
-//									 @"" : blob.blobObjectAccess.expires
-//									 };
-//			request.POSTDictionary = params;
-			
-			NSLog(@"Token %@", self.token);
-			NSLog(@"Time: %f", floor([blob.blobObjectAccess.expires timeIntervalSince1970] * 1000));
-			
-			request.POSTDictionary = blob.blobObjectAccess.params;
-			[request addFileToUpload:url parameterName:@"file"];
-			
-			request.completionBlock = ^(NSDictionary *headers, NSString *body) {
-				
-				NSLog(@"%@ %@", headers, body);
-				
-				if (blobs.count - 1 == index) {
-					dispatch_semaphore_signal(semaphore);
-				}
-			};
-			
-			request.errorBlock = ^(NSError *error) {
-				
-				NSLog(@"%@", error.description);
-				
-				if (blobs.count - 1 == index) {
-					dispatch_semaphore_signal(semaphore);
-				}
-			};
-			
-			[request startAsynchronous];
-			
-			++index;
-		}
+		NSMutableDictionary *params = [NSMutableDictionary new];
+		[params addEntriesFromDictionary:blob.blobObjectAccess.params];
+		[params setObject:@(epochTime) forKey:@"Expires"];
 		
+		request.POSTDictionary = params;
+		[request addFileToUpload:url parameterName:@"file"];
+		request.completionBlock = ^(NSDictionary *headers, NSString *body) {
+			NSLog(@"%@ %@", headers, body);
+		};
 		
-		dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+		request.errorBlock = ^(NSError *error) {
+			NSLog(@"%@", error.description);
+		};
+		
+		[request startAsynchronous];
+		
+		++index;
 	}
 }
 
