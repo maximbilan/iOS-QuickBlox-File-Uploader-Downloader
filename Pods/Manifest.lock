@@ -1,13 +1,16 @@
 PODS:
   - QuickBlox (2.2.3)
+  - SAMWeak (0.0.1)
   - STHTTPRequest (1.0.2)
 
 DEPENDENCIES:
   - QuickBlox
+  - SAMWeak
   - STHTTPRequest
 
 SPEC CHECKSUMS:
   QuickBlox: f3a8cd60af97ee673ef589d2c884713633aefa31
+  SAMWeak: f0f307c4d827adfba0e3faabc91800c91568a190
   STHTTPRequest: f4ca4e3ca31ebd9b54c134aa721ddd1711f1089d
 
 COCOAPODS: 0.36.3
