@@ -10,8 +10,7 @@
 
 #import <Quickblox/Quickblox.h>
 #import "STHTTPRequest.h"
-
-#import "NSString+Hash.h"
+#import "SAMWeak.h"
 
 @interface BYQuickBloxManager ()
 {
@@ -72,7 +71,7 @@
 		NSLog(@"%@", response);
 		[_self logInUserWithLogin:currentUser.login password:currentUser.password success:success failure:failure];
 	} errorBlock:^(QBResponse *response) {
-		DLog(@"%@", response);
+		NSLog(@"%@", response);
 		failure(response.error.error);
 	}];
 }
@@ -98,16 +97,10 @@
 	}];
 }
 
-- (void)loginToChat:(void (^)(void))success failure:(void (^)(NSError *))failure
-{
-	[chatService loginWithUser:currentUser success:success failure:failure];
-}
-
 - (void)logout:(void (^)(void))success failure:(void (^)(NSError *))failure;
 {
 	if (self.isLogged) {
 		WEAK(self);
-		[chatService logout];
 		[QBRequest logOutWithSuccessBlock:^(QBResponse *response) {
 			_self.isLogged = NO;
 			currentUser = nil;
@@ -125,56 +118,6 @@
 
 
 #pragma mark - Upload/Download
-
-- (void)uploadData:(NSData *)data
-		  filename:(NSString *)filename
-		   success:(void (^)(void))success
-			update:(void (^)(float percentCompletion))update
-		   failure:(void (^)(NSError *))failure
-{
-	[QBRequest TUploadFile:data fileName:filename contentType:@"application/octet-stream" isPublic:NO successBlock:^(QBResponse *response, QBCBlob *blob) {
-		[chatService sendAttachment:blob.ID filename:blob.name success:^{
-			success();
-		} failure:^(NSError *error) {
-			failure(error);
-		}];
-	} statusBlock:^(QBRequest *request, QBRequestStatus *status) {
-		update(status.percentOfCompletion);
-	} errorBlock:^(QBResponse *response) {
-		failure(response.error.error);
-	}];
-}
-
-- (void)uploadDataArray:(NSArray *)dataArray
-			  filenames:(NSArray *)filenames
-				success:(void (^)(void))success
-				 update:(void (^)(float percentCompletion))update
-				failure:(void (^)(NSError *))failure
-{
-	NSMutableArray *attachmentIds = [NSMutableArray array];
-	NSMutableArray *attachmentFilenames = [NSMutableArray array];
-	
-	NSInteger index = 0;
-	for (NSData *data in dataArray) {
-		NSString *filename = filenames[index];
-		[QBRequest TUploadFile:data fileName:filename contentType:@"application/octet-stream" isPublic:NO successBlock:^(QBResponse *response, QBCBlob *blob) {
-			[attachmentIds addObject:@(blob.ID)];
-			[attachmentFilenames addObject:blob.name];
-			if (dataArray.count == attachmentIds.count) {
-				[chatService sendAttachments:attachmentIds filenames:attachmentFilenames success:^{
-					success();
-				} failure:^(NSError *error) {
-					failure(error);
-				}];
-			}
-		} statusBlock:^(QBRequest *request, QBRequestStatus *status) {
-			update(status.percentOfCompletion);
-		} errorBlock:^(QBResponse *response) {
-			failure(response.error.error);
-		}];
-		++index;
-	}
-}
 
 - (void)uploadFiles:(NSArray *)fileURLs
 		  filenames:(NSArray *)filenames
