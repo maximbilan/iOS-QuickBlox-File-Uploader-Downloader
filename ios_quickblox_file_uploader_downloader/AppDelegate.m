@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "QuickBloxManager.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
+	
+	[[QuickBloxManager quickBloxManager] setup];
+	
 	return YES;
 }
 

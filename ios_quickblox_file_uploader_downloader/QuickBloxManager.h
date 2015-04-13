@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BYQuickBloxManager : NSObject
+@interface QuickBloxManager : NSObject
 
-+ (BYQuickBloxManager *)quickBloxManager;
++ (QuickBloxManager *)quickBloxManager;
 
 // Setup
 - (void)setup;

@@ -12,7 +12,7 @@
 #import "STHTTPRequest.h"
 #import "SAMWeak.h"
 
-@interface BYQuickBloxManager ()
+@interface QuickBloxManager ()
 {
 	QBUUser *currentUser;
 }
@@ -23,14 +23,14 @@
 
 @end
 
-@implementation BYQuickBloxManager
+@implementation QuickBloxManager
 
 #pragma mark - Initialization
 
-+ (BYQuickBloxManager *)quickBloxManager
++ (QuickBloxManager *)quickBloxManager
 {
 	static dispatch_once_t once_token;
-	static BYQuickBloxManager *quickBloxManager = nil;
+	static QuickBloxManager *quickBloxManager = nil;
 	dispatch_once(&once_token, ^{
 		quickBloxManager = [[self alloc] init];
 	});
