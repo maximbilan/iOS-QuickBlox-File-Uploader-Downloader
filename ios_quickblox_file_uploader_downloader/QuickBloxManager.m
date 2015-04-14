@@ -10,6 +10,7 @@
 
 #import <Quickblox/Quickblox.h>
 #import "STHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 #import "SAMWeak.h"
 
 @interface QuickBloxManager ()
@@ -160,8 +161,8 @@
 	NSInteger index = 0;
 	for (QBCBlob *blob in blobs) {
 		NSString *url = fileURLs[index];
-		STHTTPRequest *request = [STHTTPRequest requestWithURL:blob.blobObjectAccess.url];
-		request.HTTPMethod = @"POST";
+//		STHTTPRequest *request = [STHTTPRequest requestWithURL:blob.blobObjectAccess.url];
+//		request.HTTPMethod = @"POST";
 		
 		NSString *expires = (NSString *)blob.blobObjectAccess.expires;
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -169,24 +170,64 @@
 		NSDate *dateExpires = [dateFormatter dateFromString:expires];
 		long long epochTime = [@(floor([dateExpires timeIntervalSince1970])) longLongValue];
 		
-		NSMutableDictionary *params = [NSMutableDictionary new];
-		[params addEntriesFromDictionary:blob.blobObjectAccess.params];
-		[params setObject:@(epochTime) forKey:@"Expires"];
+//		NSMutableDictionary *params = [NSMutableDictionary new];
+//		[params addEntriesFromDictionary:blob.blobObjectAccess.params];
+//		[params setObject:@(epochTime) forKey:@"Expires"];
 		
 		NSLog(@"url params %@", blob.blobObjectAccess.urlWithParams);
 		NSLog(@"expires %@", @(epochTime));
 		
-		request.POSTDictionary = params;
-		[request addFileToUpload:url parameterName:@"file"];
-		request.completionBlock = ^(NSDictionary *headers, NSString *body) {
-			NSLog(@"%@ %@", headers, body);
-		};
+		NSDictionary *params = blob.blobObjectAccess.params;
 		
-		request.errorBlock = ^(NSError *error) {
-			NSLog(@"%@", error.description);
-		};
+		// ASIHTTPRequest
+		
+		ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobObjectAccess.url];
+		[request setPostValue:params[@"key"] forKey:@"key"];
+		[request setPostValue:params[@"acl"] forKey:@"acl"];
+		[request setPostValue:params[@"success_action_status"] forKey:@"success_action_status"];
+		[request setPostValue:params[@"AWSAccessKeyId"] forKey:@"AWSAccessKeyId"];
+		[request setPostValue:params[@"Policy"] forKey:@"Policy"];
+		[request setPostValue:params[@"Signature"] forKey:@"Signature"];
+		[request setPostValue:params[@"Content-Type"] forKey:@"Content-Type"];
+		[request setFile:url forKey:@"file"];
+		
+		[request setCompletionBlock:^{
+			// Use when fetching text data
+			NSString *responseString = [request responseString];
+			
+			// Use when fetching binary data
+			NSData *responseData = [request responseData];
+			
+			int a;
+			a= 0;
+		}];
+		[request setFailedBlock:^{
+			NSError *error = [request error];
+			
+			int a;
+			a= 0;
+		}];
 		
 		[request startAsynchronous];
+		
+//		curl -X POST -F "key=414cc2b3bb714f8f8adc3272e362e36800" -F "acl=authenticated-read" -F "success_action_status=201" -F "AWSAccessKeyId=AKIAIY7KFM23XGXJ7R7A" -F "Policy=eyJleHBpcmF0aW9uIjoiMjAxNS0wNC0wMlQxMDoyMDozNVoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJxYnByb2QifSx7ImtleSI6IjQxNGNjMmIzYmI3MTRmOGY4YWRjMzI3MmUzNjJlMzY4MDAifSx7ImFjbCI6ImF1dGhlbnRpY2F0ZWQtcmVhZCJ9LHsiQ29udGVudC1UeXBlIjoiaW1hZ2UvanBlZyJ9LHsic3VjY2Vzc19hY3Rpb25fc3RhdHVzIjoiMjAxIn1dfQ==" -F "Signature=786Z8BBFoxoX/BVO8QLicWrekJ0=" -F "Content-Type=image/jpeg" -F "file=@/Volumes/Data/Wicharek/Projects/NPSPlaces-iOS/Targets/FOSM/Scavenger Hunt/Game Assets/washpails.jpg" http://qbprod.s3.amazonaws.com/
+		
+//		[request setPostValue:@"Ben" forKey:@"first_name"];
+//		[request setPostValue:@"Copsey" forKey:@"last_name"];
+//		[request setFile:@"/Users/ben/Desktop/ben.jpg" forKey:@"photo"];
+		
+		
+//		request.POSTDictionary = params;
+//		[request addFileToUpload:url parameterName:@"file"];
+//		request.completionBlock = ^(NSDictionary *headers, NSString *body) {
+//			NSLog(@"%@ %@", headers, body);
+//		};
+//		
+//		request.errorBlock = ^(NSError *error) {
+//			NSLog(@"%@", error.description);
+//		};
+//		
+//		[request startAsynchronous];
 		
 		++index;
 	}
