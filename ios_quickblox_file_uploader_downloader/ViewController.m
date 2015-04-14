@@ -46,8 +46,22 @@
 	} failure:^(NSError *error) {
 		NSLog(@"Login Failure");
 	}];
+}
+
+- (IBAction)downloadAction:(UIButton *)sender
+{
+	WEAK(self);
 	
+	NSString *login = @"dusw02";
+	NSString *password = @"9h6ols7j6m7fnp1u";
 	
+	[[QuickBloxManager quickBloxManager] logInUserWithLogin:login password:password success:^{
+		NSLog(@"Login Success");
+		
+		[_self downloadFiles];
+	} failure:^(NSError *error) {
+		NSLog(@"Login Failure");
+	}];
 }
 
 - (void)uploadFiles
@@ -59,6 +73,19 @@
 	NSString *path2 = [[NSBundle mainBundle] pathForResource:@"thumb_1429003012032.736084_261a9582ea37473d866466751a03e42c.JPG" ofType:@"JPG"];
 	
 	[[QuickBloxManager quickBloxManager] uploadFiles:@[path1, path2] filenames:@[@"1429003012032.736084_261a9582ea37473d866466751a03e42c.JPG", @"thumb_1429003012032.736084_261a9582ea37473d866466751a03e42c.JPG.JPG"] success:^{
+		
+	} update:^(float percentCompletion) {
+		
+	} failure:^(NSError *error) {
+		
+	}];
+}
+
+- (void)downloadFiles
+{
+	//749471
+	
+	[[QuickBloxManager quickBloxManager] downloadFile:749484 success:^(NSString *path) {
 		
 	} update:^(float percentCompletion) {
 		

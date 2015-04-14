@@ -26,6 +26,11 @@
 			 update:(void (^)(float percentCompletion))update
 			failure:(void (^)(NSError *))failure;
 
+- (void)downloadFile:(NSUInteger)fileId
+			 success:(void (^)(NSString *path))success
+			  update:(void (^)(float percentCompletion))update
+			 failure:(void (^)(NSError *))failure;
+
 @property (strong, nonatomic, readonly) NSString *login;
 @property (strong, nonatomic, readonly) NSString *password;
 

@@ -242,14 +242,23 @@
 }
 
 - (void)downloadFile:(NSUInteger)fileId
-			 success:(void (^)(NSData *))success
+			 success:(void (^)(NSString *path))success
 			  update:(void (^)(float percentCompletion))update
 			 failure:(void (^)(NSError *))failure
 {
-	[QBRequest TDownloadFileWithBlobID:fileId successBlock:^(QBResponse *response, NSData *fileData) {
-		success(fileData);
-	} statusBlock:^(QBRequest *request, QBRequestStatus *status) {
-		update(status.percentOfCompletion);
+//	[QBRequest TDownloadFileWithBlobID:fileId successBlock:^(QBResponse *response, NSData *fileData) {
+//		success(fileData);
+//	} statusBlock:^(QBRequest *request, QBRequestStatus *status) {
+//		update(status.percentOfCompletion);
+//	} errorBlock:^(QBResponse *response) {
+//		failure(response.error.error);
+//	}];
+	
+	[QBRequest blobObjectAccessWithBlobID:fileId successBlock:^(QBResponse *response, QBCBlobObjectAccess *objectAccess) {
+		
+		int a;
+		a = 0;
+		
 	} errorBlock:^(QBResponse *response) {
 		failure(response.error.error);
 	}];
