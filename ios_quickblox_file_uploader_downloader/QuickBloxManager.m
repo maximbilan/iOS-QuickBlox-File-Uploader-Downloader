@@ -173,6 +173,9 @@
 		[params addEntriesFromDictionary:blob.blobObjectAccess.params];
 		[params setObject:@(epochTime) forKey:@"Expires"];
 		
+		NSLog(@"url params %@", blob.blobObjectAccess.urlWithParams);
+		NSLog(@"expires %@", @(epochTime));
+		
 		request.POSTDictionary = params;
 		[request addFileToUpload:url parameterName:@"file"];
 		request.completionBlock = ^(NSDictionary *headers, NSString *body) {

@@ -4,3 +4,4 @@ inhibit_all_warnings!
 pod 'QuickBlox'
 pod 'STHTTPRequest'
 pod 'SAMWeak'
+pod 'ASIHTTPRequest'
