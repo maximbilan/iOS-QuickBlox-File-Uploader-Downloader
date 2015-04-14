@@ -177,6 +177,11 @@
 		NSLog(@"url params %@", blob.blobObjectAccess.urlWithParams);
 		NSLog(@"expires %@", @(epochTime));
 		
+		NSError *attributesError;
+		NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url error:&attributesError];
+		NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
+		long long fileSize = [fileSizeNumber longLongValue];
+		
 		NSDictionary *params = blob.blobObjectAccess.params;
 		
 		// ASIHTTPRequest
@@ -198,8 +203,11 @@
 			// Use when fetching binary data
 			NSData *responseData = [request responseData];
 			
-			int a;
-			a= 0;
+			[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
+				int a;
+				a= 0;
+			} errorBlock:^(QBResponse *response) {
+			}];
 		}];
 		[request setFailedBlock:^{
 			NSError *error = [request error];
