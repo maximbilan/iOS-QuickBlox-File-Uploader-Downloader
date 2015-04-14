@@ -136,8 +136,8 @@
 		
 		QBCBlob *b = [QBCBlob blob];
 		b.name = filename;
-		//b.contentType = @"application/octet-stream";
-		b.contentType = @"image/jpeg";
+		b.contentType = @"application/octet-stream";
+		//b.contentType = @"image/jpeg";
 		
 		[QBRequest createBlob:b successBlock:^(QBResponse *response, QBCBlob *blob) {
 			NSLog(@"Successfull response!");
