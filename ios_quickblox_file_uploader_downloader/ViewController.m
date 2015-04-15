@@ -66,13 +66,10 @@
 
 - (void)uploadFiles
 {
-	//NSString *path1 = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"jpg"];
-	//NSString *path2 = [[NSBundle mainBundle] pathForResource:@"2" ofType:@"jpg"];
+	NSString *path1 = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"jpg"];
+	NSString *path2 = [[NSBundle mainBundle] pathForResource:@"2" ofType:@"jpg"];
 	
-	NSString *path1 = [[NSBundle mainBundle] pathForResource:@"1429003012032.736084_261a9582ea37473d866466751a03e42c" ofType:@"JPG"];
-	NSString *path2 = [[NSBundle mainBundle] pathForResource:@"thumb_1429003012032.736084_261a9582ea37473d866466751a03e42c.JPG" ofType:@"JPG"];
-	
-	[[QuickBloxManager quickBloxManager] uploadFiles:@[path1, path2] filenames:@[@"1429003012032.736084_261a9582ea37473d866466751a03e42c.JPG", @"thumb_1429003012032.736084_261a9582ea37473d866466751a03e42c.JPG.JPG"] success:^{
+	[[QuickBloxManager quickBloxManager] uploadFiles:@[path1, path2] filenames:@[@"1.jpg", @"2.jpg"] success:^{
 		
 	} update:^(float percentCompletion) {
 		
