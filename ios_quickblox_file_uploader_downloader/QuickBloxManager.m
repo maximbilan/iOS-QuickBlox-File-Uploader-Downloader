@@ -131,24 +131,20 @@
 	NSMutableArray *blobs = [NSMutableArray array];
 	
 	NSInteger index = 0;
-	for (NSString *fileURL in fileURLs) {
-		NSString *filename = filenames[index];
+	for (NSString *filename in filenames) {
 		
 		QBCBlob *b = [QBCBlob blob];
 		b.name = filename;
-		b.contentType = @"application/octet-stream";
-		//b.contentType = @"image/jpeg";
+		b.contentType = @"image/jpeg";
 		
 		[QBRequest createBlob:b successBlock:^(QBResponse *response, QBCBlob *blob) {
 			NSLog(@"Successfull response!");
 			[blobs addObject:blob];
-			
-			if (blobs.count == fileURLs.count) {
+			if (blobs.count == filenames.count) {
 				[_self uploadBlobs:blobs fileURLs:fileURLs];
 			}
 		} errorBlock:^(QBResponse *response) {
 			NSLog(@"Response error: %@", response.error);
-			
 			failure(response.error.error);
 		}];
 		
