@@ -161,18 +161,12 @@
 	NSInteger index = 0;
 	for (QBCBlob *blob in blobs) {
 		NSString *url = fileURLs[index];
-//		STHTTPRequest *request = [STHTTPRequest requestWithURL:blob.blobObjectAccess.url];
-//		request.HTTPMethod = @"POST";
 		
 		NSString *expires = (NSString *)blob.blobObjectAccess.expires;
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
 		NSDate *dateExpires = [dateFormatter dateFromString:expires];
 		long long epochTime = [@(floor([dateExpires timeIntervalSince1970])) longLongValue];
-		
-//		NSMutableDictionary *params = [NSMutableDictionary new];
-//		[params addEntriesFromDictionary:blob.blobObjectAccess.params];
-//		[params setObject:@(epochTime) forKey:@"Expires"];
 		
 		NSLog(@"url params %@", blob.blobObjectAccess.urlWithParams);
 		NSLog(@"expires %@", @(epochTime));
@@ -218,25 +212,6 @@
 		
 		[request startAsynchronous];
 		
-//		curl -X POST -F "key=414cc2b3bb714f8f8adc3272e362e36800" -F "acl=authenticated-read" -F "success_action_status=201" -F "AWSAccessKeyId=AKIAIY7KFM23XGXJ7R7A" -F "Policy=eyJleHBpcmF0aW9uIjoiMjAxNS0wNC0wMlQxMDoyMDozNVoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJxYnByb2QifSx7ImtleSI6IjQxNGNjMmIzYmI3MTRmOGY4YWRjMzI3MmUzNjJlMzY4MDAifSx7ImFjbCI6ImF1dGhlbnRpY2F0ZWQtcmVhZCJ9LHsiQ29udGVudC1UeXBlIjoiaW1hZ2UvanBlZyJ9LHsic3VjY2Vzc19hY3Rpb25fc3RhdHVzIjoiMjAxIn1dfQ==" -F "Signature=786Z8BBFoxoX/BVO8QLicWrekJ0=" -F "Content-Type=image/jpeg" -F "file=@/Volumes/Data/Wicharek/Projects/NPSPlaces-iOS/Targets/FOSM/Scavenger Hunt/Game Assets/washpails.jpg" http://qbprod.s3.amazonaws.com/
-		
-//		[request setPostValue:@"Ben" forKey:@"first_name"];
-//		[request setPostValue:@"Copsey" forKey:@"last_name"];
-//		[request setFile:@"/Users/ben/Desktop/ben.jpg" forKey:@"photo"];
-		
-		
-//		request.POSTDictionary = params;
-//		[request addFileToUpload:url parameterName:@"file"];
-//		request.completionBlock = ^(NSDictionary *headers, NSString *body) {
-//			NSLog(@"%@ %@", headers, body);
-//		};
-//		
-//		request.errorBlock = ^(NSError *error) {
-//			NSLog(@"%@", error.description);
-//		};
-//		
-//		[request startAsynchronous];
-		
 		++index;
 	}
 }
@@ -246,14 +221,6 @@
 			  update:(void (^)(float percentCompletion))update
 			 failure:(void (^)(NSError *))failure
 {
-//	[QBRequest TDownloadFileWithBlobID:fileId successBlock:^(QBResponse *response, NSData *fileData) {
-//		success(fileData);
-//	} statusBlock:^(QBRequest *request, QBRequestStatus *status) {
-//		update(status.percentOfCompletion);
-//	} errorBlock:^(QBResponse *response) {
-//		failure(response.error.error);
-//	}];
-	
 	[QBRequest blobObjectAccessWithBlobID:fileId successBlock:^(QBResponse *response, QBCBlobObjectAccess *objectAccess) {
 		
 		int a;
