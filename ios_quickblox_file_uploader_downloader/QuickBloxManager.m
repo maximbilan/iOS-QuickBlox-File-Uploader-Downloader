@@ -116,8 +116,6 @@
 	}
 }
 
-
-
 #pragma mark - Upload/Download
 
 - (void)uploadFiles:(NSArray *)fileURLs
@@ -188,10 +186,10 @@
 		
 		[request setCompletionBlock:^{
 			// Use when fetching text data
-			NSString *responseString = [request responseString];
+			//NSString *responseString = [request responseString];
 			
 			// Use when fetching binary data
-			NSData *responseData = [request responseData];
+			//NSData *responseData = [request responseData];
 			
 			[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
 				int a;
@@ -200,7 +198,7 @@
 			}];
 		}];
 		[request setFailedBlock:^{
-			NSError *error = [request error];
+			//NSError *error = [request error];
 			
 			int a;
 			a= 0;
