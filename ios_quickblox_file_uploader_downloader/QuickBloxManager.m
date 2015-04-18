@@ -1,15 +1,14 @@
 //
 //  BYQuickBloxManager.m
-//  disckreet
+//  ios_quickblox_file_uploader_downloader
 //
-//  Created by Maxim Bilan on 3/26/15.
-//  Copyright (c) 2015 Antovate Pty Ltd. All rights reserved.
+//  Created by Maxim Bilan on 4/13/15.
+//  Copyright (c) 2015 Maxim Bilan. All rights reserved.
 //
 
 #import "QuickBloxManager.h"
 
 #import <Quickblox/Quickblox.h>
-#import "STHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "SAMWeak.h"
 
