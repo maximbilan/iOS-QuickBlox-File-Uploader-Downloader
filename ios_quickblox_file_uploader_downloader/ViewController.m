@@ -36,8 +36,8 @@
 {
 	WEAK(self);
 	
-	NSString *login = @"dusw02";
-	NSString *password = @"9h6ols7j6m7fnp1u";
+	NSString *login = @"test";
+	NSString *password = @"testtest";
 	
 	[[QuickBloxManager quickBloxManager] logInUserWithLogin:login password:password success:^{
 		NSLog(@"Login Success");
@@ -52,8 +52,8 @@
 {
 	WEAK(self);
 	
-	NSString *login = @"dusw02";
-	NSString *password = @"9h6ols7j6m7fnp1u";
+	NSString *login = @"test";
+	NSString *password = @"testtest";
 	
 	[[QuickBloxManager quickBloxManager] logInUserWithLogin:login password:password success:^{
 		NSLog(@"Login Success");
@@ -62,6 +62,11 @@
 	} failure:^(NSError *error) {
 		NSLog(@"Login Failure");
 	}];
+}
+
+- (IBAction)testAction:(UIButton *)sender
+{
+	[self login];
 }
 
 - (void)uploadFiles
@@ -88,6 +93,35 @@
 		
 	} failure:^(NSError *error) {
 		
+	}];
+}
+
+#pragma mark - Testing
+
+- (void)login
+{
+	WEAK(self);
+	
+	NSString *login = @"test";
+	NSString *password = @"testtest";
+	
+	[[QuickBloxManager quickBloxManager] logInUserWithLogin:login password:password success:^{
+		NSLog(@"Login success");
+		[_self logout];
+	} failure:^(NSError *error) {
+		NSLog(@"Login Failure: %@", error);
+	}];
+}
+
+- (void)logout
+{
+	WEAK(self);
+	
+	[[QuickBloxManager quickBloxManager] logout:^{
+		NSLog(@"Logout success");
+		[_self login];
+	} failure:^(NSError *error) {
+		NSLog(@"Login Failure: %@", error);
 	}];
 }
 
