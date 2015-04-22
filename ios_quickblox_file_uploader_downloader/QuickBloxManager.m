@@ -18,7 +18,6 @@
 }
 
 @property (nonatomic, readwrite) NSString *token;
-
 @property (nonatomic, readwrite) BOOL isLogged;
 
 @end
