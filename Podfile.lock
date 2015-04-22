@@ -12,17 +12,20 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - MBFileDownloader (0.2)
   - QuickBlox (2.2.3)
   - Reachability (3.2)
   - SAMWeak (0.0.1)
 
 DEPENDENCIES:
   - ASIHTTPRequest
+  - MBFileDownloader
   - QuickBlox
   - SAMWeak
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  MBFileDownloader: 7c2d63fbc9da3f973102540641963c49e00173ff
   QuickBlox: f3a8cd60af97ee673ef589d2c884713633aefa31
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SAMWeak: f0f307c4d827adfba0e3faabc91800c91568a190
