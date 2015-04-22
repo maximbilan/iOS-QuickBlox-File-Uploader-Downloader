@@ -137,7 +137,8 @@
 			NSLog(@"Successfull response!");
 			[blobs addObject:blob];
 			if (blobs.count == filenames.count) {
-				[_self uploadBlobs:blobs fileURLs:fileURLs];
+				update(10);
+				[_self uploadBlobs:blobs fileURLs:fileURLs success:success update:update failure:failure];
 			}
 		} errorBlock:^(QBResponse *response) {
 			NSLog(@"Response error: %@", response.error);
@@ -148,9 +149,16 @@
 	}
 }
 
-- (void)uploadBlobs:(NSArray *)blobs fileURLs:(NSArray *)fileURLs
+- (void)uploadBlobs:(NSArray *)blobs
+		   fileURLs:(NSArray *)fileURLs
+			success:(void (^)(void))success
+			 update:(void (^)(float percentCompletion))update
+			failure:(void (^)(NSError *))failure
 {
+	WEAK(self);
 	NSInteger index = 0;
+	__block NSInteger responseIndex = 0;
+	__block NSInteger successIndex = 0;
 	for (QBCBlob *blob in blobs) {
 		NSString *url = fileURLs[index];
 		
@@ -189,21 +197,73 @@
 			// Use when fetching binary data
 			//NSData *responseData = [request responseData];
 			
-			[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
-				int a;
-				a= 0;
-			} errorBlock:^(QBResponse *response) {
-			}];
-		}];
-		[request setFailedBlock:^{
-			//NSError *error = [request error];
+			++responseIndex;
+			++successIndex;
+			if (responseIndex == blobs.count) {
+				if (successIndex == responseIndex) {
+					update(80);
+					[_self completeBlobs:blobs fileURLs:fileURLs success:success update:update failure:failure];
+				}
+				else {
+					failure(nil);
+				}
+			}
 			
-			int a;
-			a= 0;
+//			[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
+//				int a;
+//				a= 0;
+//			} errorBlock:^(QBResponse *response) {
+//			}];
+		}];
+		
+		[request setFailedBlock:^{
+			++responseIndex;
+			if (responseIndex == blobs.count) {
+				failure(nil);
+			}
 		}];
 		
 		[request startAsynchronous];
 		
+		++index;
+	}
+}
+
+- (void)completeBlobs:(NSArray *)blobs
+			 fileURLs:(NSArray *)fileURLs
+			  success:(void (^)(void))success
+			   update:(void (^)(float percentCompletion))update
+			  failure:(void (^)(NSError *))failure
+{
+	NSInteger index = 0;
+	__block NSInteger responseIndex = 0;
+	__block NSInteger successIndex = 0;
+	for (QBCBlob *blob in blobs) {
+		NSString *url = fileURLs[index];
+		
+		NSError *attributesError;
+		NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url error:&attributesError];
+		NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
+		long long fileSize = [fileSizeNumber longLongValue];
+		
+		[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
+			++responseIndex;
+			++successIndex;
+			if (responseIndex == blobs.count) {
+				if (successIndex == responseIndex) {
+					update(100);
+					success();
+				}
+				else {
+					failure(nil);
+				}
+			}
+		} errorBlock:^(QBResponse *response) {
+			++responseIndex;
+			if (responseIndex == blobs.count) {
+				failure(nil);
+			}
+		}];
 		++index;
 	}
 }

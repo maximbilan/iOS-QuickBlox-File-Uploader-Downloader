@@ -80,7 +80,21 @@
 	NSString *path1 = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"jpg"];
 	NSString *path2 = [[NSBundle mainBundle] pathForResource:@"2" ofType:@"jpg"];
 	
+	[self startWaiting];
+	
+	WEAK(self);
 	[[QuickBloxManager quickBloxManager] uploadFiles:@[path1, path2] filenames:@[@"1.jpg", @"2.jpg"] success:^{
+		[_self stopWaiting];
+	} update:^(float percentCompletion) {
+		[_progressView setProgress:percentCompletion animated:YES];
+	} failure:^(NSError *error) {
+		[_self stopWaiting];
+	}];
+}
+
+- (void)downloadFiles
+{
+	[[QuickBloxManager quickBloxManager] downloadFile:749484 success:^(NSString *path) {
 		
 	} update:^(float percentCompletion) {
 		
@@ -89,17 +103,28 @@
 	}];
 }
 
-- (void)downloadFiles
+#pragma mark - Waiting
+
+- (void)startWaiting
 {
-	//749471
-	
-	[[QuickBloxManager quickBloxManager] downloadFile:749484 success:^(NSString *path) {
-		
-	} update:^(float percentCompletion) {
-		
-	} failure:^(NSError *error) {
-		
-	}];
+	[_activityIndicator startAnimating];
+	self.view.userInteractionEnabled = NO;
+	_progressView.hidden = NO;
+	_progressView.progress = 0.0;
+	_downloadButton.hidden = YES;
+	_uploadButton.hidden = YES;
+	_testingButton.hidden = YES;
+}
+
+- (void)stopWaiting
+{
+	[_activityIndicator stopAnimating];
+	self.view.userInteractionEnabled = YES;
+	_progressView.hidden = YES;
+	_progressView.progress = 0.0;
+	_downloadButton.hidden = NO;
+	_uploadButton.hidden = NO;
+	_testingButton.hidden = YES;
 }
 
 #pragma mark - Testing
