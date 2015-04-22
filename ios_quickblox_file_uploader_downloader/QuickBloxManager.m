@@ -11,6 +11,7 @@
 #import <Quickblox/Quickblox.h>
 #import "ASIFormDataRequest.h"
 #import "SAMWeak.h"
+#import "MBFileDownloader.h"
 
 @interface QuickBloxManager ()
 {
@@ -273,11 +274,21 @@
 			  update:(void (^)(float percentCompletion))update
 			 failure:(void (^)(NSError *))failure
 {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+	NSString *lastPathComponent = [NSString stringWithFormat:@"%@", @(fileId)];
+	NSString *filePath = [basePath stringByAppendingPathComponent:lastPathComponent];
+	
 	[QBRequest blobObjectAccessWithBlobID:fileId successBlock:^(QBResponse *response, QBCBlobObjectAccess *objectAccess) {
-		
-		int a;
-		a = 0;
-		
+		MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL URLWithString:objectAccess.urlWithParams]
+																	  toFilePath:filePath];
+		[fileDownloader downloadWithSuccess:^{
+			success(filePath);
+		} update:^(float value) {
+			update(value);
+		} failure:^(NSError *error) {
+			failure(error);
+		}];
 	} errorBlock:^(QBResponse *response) {
 		failure(response.error.error);
 	}];

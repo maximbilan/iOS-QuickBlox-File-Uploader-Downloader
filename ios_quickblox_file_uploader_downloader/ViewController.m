@@ -94,12 +94,16 @@
 
 - (void)downloadFiles
 {
-	[[QuickBloxManager quickBloxManager] downloadFile:749484 success:^(NSString *path) {
-		
+	[self startWaiting];
+	
+	WEAK(self);
+	[[QuickBloxManager quickBloxManager] downloadFile:822342 success:^(NSString *path) {
+		NSLog(@"%@", path);
+		[_self stopWaiting];
 	} update:^(float percentCompletion) {
-		
+		[_progressView setProgress:percentCompletion animated:YES];
 	} failure:^(NSError *error) {
-		
+		[_self stopWaiting];
 	}];
 }
 
