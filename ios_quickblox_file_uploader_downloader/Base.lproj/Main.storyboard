@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -43,17 +43,38 @@
                                     <action selector="testAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cYh-Xd-bjs"/>
                                 </connections>
                             </button>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Tqu-OZ-WTp">
+                                <rect key="frame" x="225" y="267" width="150" height="3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="rYA-ln-rRO"/>
+                                    <constraint firstAttribute="width" constant="150" id="v4a-M5-khS"/>
+                                </constraints>
+                            </progressView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dA9-rM-szJ">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Tqu-OZ-WTp" secondAttribute="centerY" constant="32" id="1ut-k4-1B2"/>
+                            <constraint firstAttribute="centerX" secondItem="Tqu-OZ-WTp" secondAttribute="centerX" id="6Pe-AL-pjp"/>
+                            <constraint firstAttribute="centerY" secondItem="dA9-rM-szJ" secondAttribute="centerY" id="6l0-G8-xEd"/>
                             <constraint firstAttribute="centerY" secondItem="2tV-qv-y6A" secondAttribute="centerY" id="D0i-Y4-oJK"/>
                             <constraint firstAttribute="centerY" secondItem="EB8-4m-sUN" secondAttribute="centerY" constant="56" id="OK4-XM-pDN"/>
                             <constraint firstAttribute="centerX" secondItem="EB8-4m-sUN" secondAttribute="centerX" constant="2" id="Ueq-qf-yyp"/>
                             <constraint firstAttribute="centerX" secondItem="2tV-qv-y6A" secondAttribute="centerX" id="YC5-yk-mdx"/>
+                            <constraint firstAttribute="centerX" secondItem="dA9-rM-szJ" secondAttribute="centerX" id="fIi-WL-7PT"/>
                             <constraint firstAttribute="centerY" secondItem="Hf3-29-bls" secondAttribute="centerY" constant="-51" id="hVG-fc-I7W"/>
                             <constraint firstAttribute="centerX" secondItem="Hf3-29-bls" secondAttribute="centerX" id="yPe-LK-XRU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="dA9-rM-szJ" id="Euv-FD-gug"/>
+                        <outlet property="downloadButton" destination="EB8-4m-sUN" id="vGp-Lm-r4D"/>
+                        <outlet property="progressView" destination="Tqu-OZ-WTp" id="RK8-HM-Ld2"/>
+                        <outlet property="testingButton" destination="Hf3-29-bls" id="zph-Dx-YF0"/>
+                        <outlet property="uploadButton" destination="2tV-qv-y6A" id="Rw8-7e-evp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
