@@ -4,3 +4,4 @@ inhibit_all_warnings!
 pod 'QuickBlox'
 pod 'SAMWeak'
 pod 'ASIHTTPRequest'
+pod 'MBFileDownloader'
