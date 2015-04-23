@@ -1,1 +1,3 @@
-# iOS-QuickBlox-File-Uploader-Downloader
+# Quickblox: Uploading from file, downloading to file
+
+
