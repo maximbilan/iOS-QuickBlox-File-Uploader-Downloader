@@ -1,6 +1,6 @@
 <h2>Quickblox: Uploading from file, downloading to file</h2>
 
-Unfortunately QuickBlox iOS SDK has methods for downloading and uploading only using memory. We need pass the <i>NSData</i> or receive <i>NSData</i>. It’s really problem. You can see methods from QuickBlox iOS SDK in the end of the article or <a href="http://sdk.quickblox.com/ios/">here</a>. In this sample I provide example, how to upload content from file, and how to download to file.
+Unfortunately <a href="http://quickblox.com">QuickBlox iOS SDK</a> has methods for downloading and uploading only using memory. We need pass the <i>NSData</i> or receive <i>NSData</i>. It’s really problem. You can see methods from <a href="http://quickblox.com">QuickBlox iOS SDK</a> in the end of the article or <a href="http://sdk.quickblox.com/ios/">here</a>. In this sample I provide example, how to upload content from file, and how to download to file.
 
 <h3>Uploading</h3>
 
