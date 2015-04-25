@@ -74,6 +74,29 @@ Curl response:
 &#60;/PostResponse&#62;
 </pre>
 
+In Objective C it’s more difficult. We need to do Form Data request. The easiest way to do this, use ASIHTTPRequest framework. For example:
+
+<pre>
+NSDictionary *params = blob.blobObjectAccess.params;
+ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobObjectAccess.url];
+[request setPostValue:params[@"key"] forKey:@"key"];
+[request setPostValue:params[@"acl"] forKey:@"acl"];
+[request setPostValue:params[@"success_action_status"] forKey:@"success_action_status"];
+[request setPostValue:params[@"AWSAccessKeyId"] forKey:@"AWSAccessKeyId"];
+[request setPostValue:params[@"Policy"] forKey:@"Policy"];
+[request setPostValue:params[@"Signature"] forKey:@"Signature"];
+[request setPostValue:params[@"Content-Type"] forKey:@"Content-Type"];
+[request setFile:url forKey:@"file"];
+
+[request setCompletionBlock^{
+}];
+
+[request setFailedBlock:^{
+}];
+
+[request startAsynchronous];
+</pre>
+
 <h3>Downloading</h3>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
