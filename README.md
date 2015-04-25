@@ -4,6 +4,45 @@ Unfortunately <a href="http://quickblox.com">QuickBlox iOS SDK</a> has methods f
 
 <h3>Uploading</h3>
 
+First of all we should create <i>QB File</i>. Curl request:
+<pre>
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QuickBlox-REST-API-Version: 0.1.0" \
+-H "QB-Token: 20e55d804b6bff1cba87cb0215d8967150722ecb" \
+-d '{"blob": {"content_type": "image/jpeg", "name": "museum.jpeg"}}' \
+http://api.quickblox.com/blobs.json
+</pre>
+
+Response:
+
+<pre>
+{
+  "blob": {
+    "blob_status": null,
+    "content_type": "image/jpeg",
+    "created_at": "2012-04-23T13:22:34Z",
+    "id": 315,
+    "last_read_access_ts": null,
+    "lifetime": 0,
+    "name": "111.jpg",
+    "public": false,
+    "ref_count": 1,
+    "set_completed_at": null,
+    "size": null,
+    "uid": "30a8bcd7c714417eb62b95350d7e13b900",
+    "updated_at": "2012-04-23T13:22:34Z",
+    "blob_object_access": {
+      "blob_id": 315,
+      "expires": "2012-04-23T14:22:34Z",
+      "id": 315,
+      "object_access_type": "Write",
+      "params": "http://qbprod.s3.amazonaws.com/?AWSAccessKeyId=AKIAIY7KFM23XGXJ7R7A&Policy=eyAiZXhwaXJhdGlvbiI6ICIyMDEyLTA0LTIzVDE0OjIyOjM0WiIsCiAgICAgICJjb25kaXRpb25zIjogWwogICAgICAgIHsiYnVja2V0IjogInFicHJvZCJ9LAogICAgICAgIFsiZXEiLCAiJGtleSIsICIzMGE4YmNkN2M3MTQ0MTdlYjYyYjk1MzUwZDdlMTNiOTAwIl0sCiAgICAgICAgeyJhY2wiOiAiYXV0aGVudGljYXRlZC1yZWFkIn0sCiAgICAgICAgWyJlcSIsICIkQ29udGVudC1UeXBlIiwgImltYWdlL2pwZWciXSwKICAgICAgICB7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6ICIyMDEifQogICAgICBdCiAgICB9&Signature=eBtgK1jAzsGNcFjpqEGiTLnm008%3D&key=30a8bcd7c714417eb62b95350d7e13b900&Content-Type=image%2Fjpeg&acl=authenticated-read&success_action_status=201"
+    }
+  }
+}
+</pre>
+
 <h3>Downloading</h3>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
