@@ -44,7 +44,16 @@ Response:
 </pre>
 
 <i>Objective C</i> implementation:
+<pre>
+QBCBlob *b = [QBCBlob blob];
+b.name = filename;
+b.contentType = @"image/jpeg";
+[QBRequest createBlob:b successBlock:^(QBResponse *response, QBCBlob *blob) {
 
+} errorBlock:^(QBResponse *response) {
+
+}];
+</pre>
 
 <h3>Downloading</h3>
 
