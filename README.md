@@ -124,6 +124,9 @@ long long fileSize = [fileSizeNumber longLongValue];
 
 }];
 </pre>
+
+That’s all about uploading.
+
 <h3>Downloading</h3>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
