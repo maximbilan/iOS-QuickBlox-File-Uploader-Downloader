@@ -64,14 +64,14 @@ curl -X POST -F "key=45b1467ead1c4c7c8abcde01408ae17e00" -F "acl=authenticated-r
 Curl response:
 
 <pre>
-<PostResponse>
-  <Location>
+&#60;PostResponse&#62;
+  &#60;Location&#62;
     https://blobs-test-oz.s3.amazonaws.com/d5f92bcf84374e4fb8961537f7a7de6500
-  </Location>
-  <Bucket>blobs-test-oz</Bucket>
-  <Key>d5f92bcf84374e4fb8961537f7a7de6500</Key>
-  <ETag>"de1aae3e6beadb83bc8e1e21eb7e2a66"</ETag>
-</PostResponse>
+  &#60;/Location&#62;
+  &#60;Bucket&#62;blobs-test-oz&#60;/Bucket&#62;
+  &#60;Key&#62;d5f92bcf84374e4fb8961537f7a7de6500&#60;/Key&#62;
+  &#60;ETag&#62;"de1aae3e6beadb83bc8e1e21eb7e2a66"&#60;/ETag&#62;
+&#60;/PostResponse&#62;
 </pre>
 
 <h3>Downloading</h3>
