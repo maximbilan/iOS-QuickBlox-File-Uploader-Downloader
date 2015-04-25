@@ -55,6 +55,25 @@ b.contentType = @"image/jpeg";
 }];
 </pre>
 
+Now we have an amazon link, and we can upload the file. We need to do the following request:
+
+<pre>
+curl -X POST -F "key=45b1467ead1c4c7c8abcde01408ae17e00" -F "acl=authenticated-read" -F "success_action_status=201" -F "AWSAccessKeyId=AKIAIY7KFM23XGXJ7R7A" -F "Policy=eyAiZXhwaXJhdGlvbiI6ICIyMDEyLTAxLTE5VDE0OjMzOjMzWiIsCiAgICAgICJjb25kaXRpb25zIjogWwogICAgICAgIHsiYnVja2V0IjogInFicHJvZCJ9LAogICAgICAgIFsiZXEiLCAiJGtleSIsICI0NWIxNDY3ZWFkMWM0YzdjOGFiY2RlMDE0MDhhZTE3ZTAwIl0sCiAgICAgICAgeyJhY2wiOiAiYXV0aGVudGljYXRlZC1yZWFkIn0sCiAgICAgICAgWyJlcSIsICIkQ29udGVudC1UeXBlIiwgImltYWdlL2pwZWciXSwKICAgICAgICB7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6ICIyMDEifQogICAgICBdCiAgICB9" -F "Signature=p0MlUS20qaLFBDrqHgIu1F9NMtQ%3D" -F "Content-Type=image/jpeg" -F "file=@111.jpg"  http://qbprod.s3.amazonaws.com/
+</pre>
+
+Curl response:
+
+<pre>
+<PostResponse>
+  <Location>
+    https://blobs-test-oz.s3.amazonaws.com/d5f92bcf84374e4fb8961537f7a7de6500
+  </Location>
+  <Bucket>blobs-test-oz</Bucket>
+  <Key>d5f92bcf84374e4fb8961537f7a7de6500</Key>
+  <ETag>"de1aae3e6beadb83bc8e1e21eb7e2a66"</ETag>
+</PostResponse>
+</pre>
+
 <h3>Downloading</h3>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
