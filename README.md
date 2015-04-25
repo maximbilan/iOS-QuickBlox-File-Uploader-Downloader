@@ -43,6 +43,9 @@ Response:
 }
 </pre>
 
+<i>Objective C</i> implementation:
+
+
 <h3>Downloading</h3>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
