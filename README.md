@@ -97,6 +97,33 @@ ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobO
 [request startAsynchronous];
 </pre>
 
+And after that we should set file status to ‘Complete’. If the specified file size does not match to the actual, the actual will be set.
+
+Curl request:
+
+<pre>
+curl -X PUT \
+-H "Content-Type: application/json" \
+-H "QuickBlox-REST-API-Version: 0.1.0" \
+-H "QB-Token: 74b0087b00d748f944429f1c355b91169f5d9d52" \
+-d '{"blob": {"size": "86"}}' \
+http://api.quickblox.com/blobs/97/complete.json
+</pre>
+
+Objective C:
+
+<pre>
+NSError *attributesError;
+NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url error:&attributesError];
+NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
+long long fileSize = [fileSizeNumber longLongValue];
+
+[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
+
+} errorBlock:^(QBResponse *response) {
+
+}];
+</pre>
 <h3>Downloading</h3>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
