@@ -74,7 +74,7 @@ Curl response:
 &#60;/PostResponse&#62;
 </pre>
 
-In Objective C it’s more difficult. We need to do Form Data request. The easiest way to do this, use ASIHTTPRequest framework. For example:
+In <i>Objective C</i> it’s more difficult. We need to do <i>Form Data</i> request. The easiest way to do this, use <a href="https://github.com/pokeb/asi-http-request">ASIHTTPRequest</a> framework. For example:
 
 <pre>
 NSDictionary *params = blob.blobObjectAccess.params;
