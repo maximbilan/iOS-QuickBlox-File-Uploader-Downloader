@@ -129,6 +129,60 @@ That’s all about uploading.
 
 <h3>Downloading</h3>
 
+It’s easiest than uploading. One request for receiving url.
+
+Curl request:
+
+<pre>
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QuickBlox-REST-API-Version: 0.1.0" \
+-H "QB-Token: 74b0087b00d748f944429f1c355b91169f5d9d52" \
+http://api.quickblox.com/blobs/301/getblobobjectbyid.json
+</pre>
+
+Response:
+
+<pre>
+{
+  "blob_object_access": {
+    "id": 97,
+    "blob_id": 97,
+    "expires": "2012-03-22T17:35:43Z",
+    "object_access_type": "Read",
+    "params": "https://blobs-test-oz.s3.amazonaws.com:443/49d386c6cc68437a9fcae66ce7edfa8b00?Signature=ZRKS05Fvlu5n8Cx2yTh7JQAZr7k%3D&Expires=1332437743&AWSAccessKeyId=AKIAJHMRS6ZUIQ6VTQDQ"
+  }
+}
+</pre>
+
+Objective C:
+
+<pre>
+[QBRequest blobObjectAccessWithBlobID:fileId successBlock:^(QBResponse *response, QBCBlobObjectAccess objectAccess) {
+
+}
+} errorBlock:^(QBResponse *response) {
+
+}];
+</pre>
+
+For simple way to download file use MBFileDownloader:
+
+<pre>
+MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL URLWithString:objectAccess.urlWithParams] toFilePath:filePath];
+
+[fileDownloader downloadWithSuccess:^{
+
+} update:^(float value) {
+
+} failure:^(NSError *error) {
+}];
+</pre>
+
+That’s all.
+
+I provide sample in this repository, full process of uploading and downloading. Please use for free.
+
 <h3>Methods from QuickBlox iOS SDK</h3>
 <pre>
 #pragma mark -
