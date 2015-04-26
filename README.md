@@ -131,7 +131,7 @@ That’s all about uploading.
 
 It’s easiest than uploading. One request for receiving url.
 
-Curl request:
+<a href="http://curl.haxx.se">Curl</a> request:
 
 <pre>
 curl -X POST \
@@ -176,6 +176,7 @@ MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL 
 } update:^(float value) {
 
 } failure:^(NSError *error) {
+
 }];
 </pre>
 
