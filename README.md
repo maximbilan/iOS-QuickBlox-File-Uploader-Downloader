@@ -4,7 +4,7 @@ Unfortunately <a href="http://quickblox.com">QuickBlox iOS SDK</a> has methods f
 
 <h3>Uploading</h3>
 
-First of all we should create <i>QB File</i>. Curl request:
+First of all we should create <i>QB File</i>. <a href="http://curl.haxx.se">Curl</a> request:
 <pre>
 curl -X POST \
 -H "Content-Type: application/json" \
@@ -61,7 +61,7 @@ Now we have an amazon link, and we can upload the file. We need to do the follow
 curl -X POST -F "key=45b1467ead1c4c7c8abcde01408ae17e00" -F "acl=authenticated-read" -F "success_action_status=201" -F "AWSAccessKeyId=AKIAIY7KFM23XGXJ7R7A" -F "Policy=eyAiZXhwaXJhdGlvbiI6ICIyMDEyLTAxLTE5VDE0OjMzOjMzWiIsCiAgICAgICJjb25kaXRpb25zIjogWwogICAgICAgIHsiYnVja2V0IjogInFicHJvZCJ9LAogICAgICAgIFsiZXEiLCAiJGtleSIsICI0NWIxNDY3ZWFkMWM0YzdjOGFiY2RlMDE0MDhhZTE3ZTAwIl0sCiAgICAgICAgeyJhY2wiOiAiYXV0aGVudGljYXRlZC1yZWFkIn0sCiAgICAgICAgWyJlcSIsICIkQ29udGVudC1UeXBlIiwgImltYWdlL2pwZWciXSwKICAgICAgICB7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6ICIyMDEifQogICAgICBdCiAgICB9" -F "Signature=p0MlUS20qaLFBDrqHgIu1F9NMtQ%3D" -F "Content-Type=image/jpeg" -F "file=@111.jpg"  http://qbprod.s3.amazonaws.com/
 </pre>
 
-Curl response:
+<a href="http://curl.haxx.se">Curl</a> response:
 
 <pre>
 &#60;PostResponse&#62;
@@ -99,7 +99,7 @@ ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobO
 
 And after that we should set file status to ‘Complete’. If the specified file size does not match to the actual, the actual will be set.
 
-Curl request:
+<a href="http://curl.haxx.se">Curl</a> request:
 
 <pre>
 curl -X PUT \
