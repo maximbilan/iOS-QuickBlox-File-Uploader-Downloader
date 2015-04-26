@@ -155,7 +155,7 @@ Response:
 }
 </pre>
 
-Objective C:
+<i>Objective C</i>:
 
 <pre>
 [QBRequest blobObjectAccessWithBlobID:fileId successBlock:^(QBResponse *response, QBCBlobObjectAccess objectAccess) {
@@ -181,7 +181,7 @@ MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL 
 
 That’s all.
 
-I provide sample in this repository, full process of uploading and downloading. Please use for free.
+<b>I provide sample in this repository, full process of uploading and downloading. Please use for free.</b>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
 <pre>
