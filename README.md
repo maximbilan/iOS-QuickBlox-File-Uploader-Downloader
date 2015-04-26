@@ -166,7 +166,7 @@ Objective C:
 }];
 </pre>
 
-For simple way to download file use MBFileDownloader:
+For simple way to download file use <a href="https://github.com/maximbilan/MBFileDownloader">MBFileDownloader</a>:
 
 <pre>
 MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL URLWithString:objectAccess.urlWithParams] toFilePath:filePath];
