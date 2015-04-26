@@ -179,8 +179,6 @@
 		
 		NSDictionary *params = blob.blobObjectAccess.params;
 		
-		// ASIHTTPRequest
-		
 		ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobObjectAccess.url];
 		[request setPostValue:params[@"key"] forKey:@"key"];
 		[request setPostValue:params[@"acl"] forKey:@"acl"];
@@ -192,12 +190,6 @@
 		[request setFile:url forKey:@"file"];
 		
 		[request setCompletionBlock:^{
-			// Use when fetching text data
-			//NSString *responseString = [request responseString];
-			
-			// Use when fetching binary data
-			//NSData *responseData = [request responseData];
-			
 			++responseIndex;
 			++successIndex;
 			if (responseIndex == blobs.count) {
@@ -209,12 +201,6 @@
 					failure(nil);
 				}
 			}
-			
-//			[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
-//				int a;
-//				a= 0;
-//			} errorBlock:^(QBResponse *response) {
-//			}];
 		}];
 		
 		[request setFailedBlock:^{
