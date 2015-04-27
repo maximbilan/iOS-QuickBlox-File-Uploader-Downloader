@@ -97,7 +97,7 @@ ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobO
 [request startAsynchronous];
 </pre>
 
-And after that we should set file status to ‘Complete’. If the specified file size does not match to the actual, the actual will be set.
+And after that we should set file status to ‘<i>Complete</i>’. If the specified file size does not match to the actual, the actual will be set.
 
 <a href="http://curl.haxx.se">Curl</a> request:
 
@@ -110,7 +110,7 @@ curl -X PUT \
 http://api.quickblox.com/blobs/97/complete.json
 </pre>
 
-Objective C:
+<i>Objective C</i>:
 
 <pre>
 NSError *attributesError;
