@@ -172,11 +172,6 @@
 		NSLog(@"url params %@", blob.blobObjectAccess.urlWithParams);
 		NSLog(@"expires %@", @(epochTime));
 		
-		NSError *attributesError;
-		NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url error:&attributesError];
-		NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
-		long long fileSize = [fileSizeNumber longLongValue];
-		
 		NSDictionary *params = blob.blobObjectAccess.params;
 		
 		ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobObjectAccess.url];
