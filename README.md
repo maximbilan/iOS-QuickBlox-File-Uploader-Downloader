@@ -160,7 +160,6 @@ Response:
 <pre>
 [QBRequest blobObjectAccessWithBlobID:fileId successBlock:^(QBResponse *response, QBCBlobObjectAccess objectAccess) {
 
-}
 } errorBlock:^(QBResponse *response) {
 
 }];
