@@ -227,7 +227,7 @@
 		NSError *attributesError;
 		NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url error:&attributesError];
 		NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
-		long long fileSize = [fileSizeNumber longLongValue];
+		NSUInteger fileSize = [fileSizeNumber unsignedIntegerValue];
 		
 		[QBRequest completeBlobWithID:blob.ID size:fileSize successBlock:^(QBResponse *response) {
 			++responseIndex;
