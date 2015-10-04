@@ -58,7 +58,19 @@ b.contentType = @"image/jpeg";
 Now we have an amazon link, and we can upload the file. We need to do the following request:
 
 <pre>
-curl -X POST -F "key=45b1467ead1c4c7c8abcde01408ae17e00" -F "acl=authenticated-read" -F "success_action_status=201" -F "AWSAccessKeyId=AKIAIY7KFM23XGXJ7R7A" -F "Policy=eyAiZXhwaXJhdGlvbiI6ICIyMDEyLTAxLTE5VDE0OjMzOjMzWiIsCiAgICAgICJjb25kaXRpb25zIjogWwogICAgICAgIHsiYnVja2V0IjogInFicHJvZCJ9LAogICAgICAgIFsiZXEiLCAiJGtleSIsICI0NWIxNDY3ZWFkMWM0YzdjOGFiY2RlMDE0MDhhZTE3ZTAwIl0sCiAgICAgICAgeyJhY2wiOiAiYXV0aGVudGljYXRlZC1yZWFkIn0sCiAgICAgICAgWyJlcSIsICIkQ29udGVudC1UeXBlIiwgImltYWdlL2pwZWciXSwKICAgICAgICB7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6ICIyMDEifQogICAgICBdCiAgICB9" -F "Signature=p0MlUS20qaLFBDrqHgIu1F9NMtQ%3D" -F "Content-Type=image/jpeg" -F "file=@111.jpg"  http://qbprod.s3.amazonaws.com/
+curl -X POST 
+  -F "Content-Type=image/jpeg" 
+  -F "Expires=Wed, 30 Sep 2015 13:29:39 GMT" 
+  -F "acl=authenticated-read" 
+  -F "key=76101edd87fe4b299ff41f63633bf9c100" 
+  -F "policy=eyJleHBpcmF0aW9uIjoiMjAxNS0wOS0zMFQxMzoyOTozOVoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJxYnByb2QifSx7ImFjbCI6ImF1dGhlbnRpY2F0ZWQtcmVhZCJ9LHsiQ29udGVudC1UeXBlIjoiaW1hZ2UvanBnIn0seyJzdWNjZXNzX2FjdGlvbl9zdGF0dXMiOiIyMDEifSx7IkV4cGlyZXMiOiJXZWQsIDMwIFNlcCAyMDE1IDEzOjI5OjM5IEdNVCJ9LHsia2V5IjoiNzYxMDFlZGQ4N2ZlNGIyOTlmZjQxZjYzNjMzYmY5YzEwMCJ9LHsieC1hbXotY3JlZGVudGlhbCI6IkFLSUFJWTdLRk0yM1hHWEo3UjdBLzIwMTUwOTMwL3VzLWVhc3QtMS9zMy9hd3M0X3JlcXVlc3QifSx7IngtYW16LWFsZ29yaXRobSI6IkFXUzQtSE1BQy1TSEEyNTYifSx7IngtYW16LWRhdGUiOiIyMDE1MDkzMFQxMjI5MzlaIn1dfQ==" 
+  -F "success_action_status=201" 
+  -F "x-amz-algorithm=AWS4-HMAC-SHA256" 
+  -F "x-amz-credential=AKIAIY7KFM23XGXJ7R7A/20150930/us-east-1/s3/aws4_request" 
+  -F "x-amz-date=20150930T122939Z" 
+  -F "x-amz-signature=eee18ae3d47a745bccc9007d1b7b1679e855becb44b1928bb710428e18e397a8" 
+  -F "file=@user_new_avatar.jpg"  
+https://qbprod.s3.amazonaws.com/
 </pre>
 
 <a href="http://curl.haxx.se">Curl</a> response:
@@ -68,9 +80,9 @@ curl -X POST -F "key=45b1467ead1c4c7c8abcde01408ae17e00" -F "acl=authenticated-r
   &#60;Location&#62;
     https://blobs-test-oz.s3.amazonaws.com/d5f92bcf84374e4fb8961537f7a7de6500
   &#60;/Location&#62;
-  &#60;Bucket&#62;blobs-test-oz&#60;/Bucket&#62;
-  &#60;Key&#62;d5f92bcf84374e4fb8961537f7a7de6500&#60;/Key&#62;
-  &#60;ETag&#62;"de1aae3e6beadb83bc8e1e21eb7e2a66"&#60;/ETag&#62;
+  &#60;Bucket>blobs-test-oz&#60;/Bucket&#62;
+  &#60;Key>d5f92bcf84374e4fb8961537f7a7de6500&#60;/Key&#62;
+  &#60;ETag>"de1aae3e6beadb83bc8e1e21eb7e2a66"&#60;/ETag&#62;
 &#60;/PostResponse&#62;
 </pre>
 
