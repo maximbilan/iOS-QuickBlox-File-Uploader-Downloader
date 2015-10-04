@@ -47,8 +47,6 @@
 	[QBConnection registerServiceSecret:@"vqOLNZ3KLqabbRA"];
 	[QBSettings setAccountKey:@"vmVE4sGeFsrcaFoi9iCG"];
 	
-	[QBConnection setAutoCreateSessionEnabled:YES];
-	
 #ifndef DEBUG
 	[QBApplication sharedApplication].productionEnvironmentForPushesEnabled = YES;
 	[QBSettings setLogLevel:QBLogLevelErrors];
@@ -89,7 +87,7 @@
 		currentUser.login = login;
 		currentUser.password = password;
 		_self.isLogged = YES;
-		_token = [QBBaseModule sharedModule].token;
+		//_token = [QBBaseModule sharedModule].token;
 		
 		success();
 	} errorBlock:^(QBResponse *response) {
