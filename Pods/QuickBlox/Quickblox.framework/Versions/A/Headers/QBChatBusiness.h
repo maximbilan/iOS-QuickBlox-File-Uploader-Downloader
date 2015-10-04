@@ -7,13 +7,9 @@
 //
 
 #import <Quickblox/QBChatMessage.h>
-#import <Quickblox/QBChatRoom.h>
-#import <Quickblox/QBChatRoomOccupant.h>
 #import <Quickblox/QBContactList.h>
 #import <Quickblox/QBContactListItem.h>
 #import <Quickblox/QBChatDialog.h>
-#import <Quickblox/QBChatHistoryMessage.h>
-#import <Quickblox/QBStreamManagementCallbackObject.h>
 #import <Quickblox/QBPrivacyItem.h>
 #import <Quickblox/QBPrivacyList.h>
 #import <Quickblox/QBChatAttachment.h>
