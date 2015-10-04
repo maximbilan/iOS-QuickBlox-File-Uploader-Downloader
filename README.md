@@ -91,13 +91,16 @@ In <i>Objective C</i> it’s more difficult. We need to do <i>Form Data</i> requ
 <pre>
 NSDictionary *params = blob.blobObjectAccess.params;
 ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobObjectAccess.url];
-[request setPostValue:params[@"key"] forKey:@"key"];
-[request setPostValue:params[@"acl"] forKey:@"acl"];
-[request setPostValue:params[@"success_action_status"] forKey:@"success_action_status"];
-[request setPostValue:params[@"AWSAccessKeyId"] forKey:@"AWSAccessKeyId"];
-[request setPostValue:params[@"Policy"] forKey:@"Policy"];
-[request setPostValue:params[@"Signature"] forKey:@"Signature"];
 [request setPostValue:params[@"Content-Type"] forKey:@"Content-Type"];
+[request setPostValue:params[@"Expires"] forKey:@"Expires"];
+[request setPostValue:params[@"acl"] forKey:@"acl"];
+[request setPostValue:params[@"key"] forKey:@"key"];
+[request setPostValue:params[@"policy"] forKey:@"policy"];
+[request setPostValue:params[@"success_action_status"] forKey:@"success_action_status"];
+[request setPostValue:params[@"x-amz-algorithm"] forKey:@"x-amz-algorithm"];
+[request setPostValue:params[@"x-amz-credential"] forKey:@"x-amz-credential"];
+[request setPostValue:params[@"x-amz-date"] forKey:@"x-amz-date"];
+[request setPostValue:params[@"x-amz-signature"] forKey:@"x-amz-signature"];
 [request setFile:url forKey:@"file"];
 
 [request setCompletionBlock^{
