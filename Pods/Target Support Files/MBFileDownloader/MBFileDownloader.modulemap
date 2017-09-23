@@ -1,0 +1,6 @@
+framework module MBFileDownloader {
+  umbrella header "MBFileDownloader-umbrella.h"
+
+  export *
+  module * { export * }
+}

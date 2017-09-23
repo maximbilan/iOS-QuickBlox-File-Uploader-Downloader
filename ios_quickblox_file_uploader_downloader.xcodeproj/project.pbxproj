@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D1DDA7E5DCE4602BC00C098 /* libPods-ios_quickblox_file_uploader_downloader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 297D3BCFD1713432769136A4 /* libPods-ios_quickblox_file_uploader_downloader.a */; };
-		6AB90C76CC70F96EA4A93E7C /* libPods-ios_quickblox_file_uploader_downloaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7438FF2338A8CD8C1076CE06 /* libPods-ios_quickblox_file_uploader_downloaderTests.a */; };
+		10214BAA95FED56452A95A05 /* Pods_ios_quickblox_file_uploader_downloaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B74534DEEAA5778CA16CCCB /* Pods_ios_quickblox_file_uploader_downloaderTests.framework */; };
 		6D64CCE21ADC395900E3D1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D64CCE11ADC395900E3D1D3 /* main.m */; };
 		6D64CCE51ADC395900E3D1D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D64CCE41ADC395900E3D1D3 /* AppDelegate.m */; };
 		6D64CCE81ADC395900E3D1D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D64CCE71ADC395900E3D1D3 /* ViewController.m */; };
@@ -19,6 +18,7 @@
 		6D64CD071ADC3BE700E3D1D3 /* QuickBloxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D64CD061ADC3BE700E3D1D3 /* QuickBloxManager.m */; };
 		6D64CD0A1ADC436000E3D1D3 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D64CD081ADC436000E3D1D3 /* 1.jpg */; };
 		6D64CD0B1ADC436000E3D1D3 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D64CD091ADC436000E3D1D3 /* 2.jpg */; };
+		845EBDA14BD5E8DB4E31E244 /* Pods_ios_quickblox_file_uploader_downloader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF811BDF8F8F3683897E61 /* Pods_ios_quickblox_file_uploader_downloader.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +34,7 @@
 /* Begin PBXFileReference section */
 		08CD200E509C603A6B476847 /* Pods-ios_quickblox_file_uploader_downloader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_quickblox_file_uploader_downloader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios_quickblox_file_uploader_downloader/Pods-ios_quickblox_file_uploader_downloader.debug.xcconfig"; sourceTree = "<group>"; };
 		0903D8B987AFB7D6EC39A8F7 /* Pods-ios_quickblox_file_uploader_downloaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_quickblox_file_uploader_downloaderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios_quickblox_file_uploader_downloaderTests/Pods-ios_quickblox_file_uploader_downloaderTests.debug.xcconfig"; sourceTree = "<group>"; };
-		297D3BCFD1713432769136A4 /* libPods-ios_quickblox_file_uploader_downloader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios_quickblox_file_uploader_downloader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B74534DEEAA5778CA16CCCB /* Pods_ios_quickblox_file_uploader_downloaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_quickblox_file_uploader_downloaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CD38D45C46FE193A6A632D /* Pods-ios_quickblox_file_uploader_downloaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_quickblox_file_uploader_downloaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios_quickblox_file_uploader_downloaderTests/Pods-ios_quickblox_file_uploader_downloaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		6D64CCDC1ADC395900E3D1D3 /* ios_quickblox_file_uploader_downloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_quickblox_file_uploader_downloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D64CCE01ADC395900E3D1D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,8 +53,8 @@
 		6D64CD061ADC3BE700E3D1D3 /* QuickBloxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBloxManager.m; sourceTree = "<group>"; };
 		6D64CD081ADC436000E3D1D3 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		6D64CD091ADC436000E3D1D3 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		7438FF2338A8CD8C1076CE06 /* libPods-ios_quickblox_file_uploader_downloaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios_quickblox_file_uploader_downloaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E325E2BF4C2036940E1DF424 /* Pods-ios_quickblox_file_uploader_downloader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_quickblox_file_uploader_downloader.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios_quickblox_file_uploader_downloader/Pods-ios_quickblox_file_uploader_downloader.release.xcconfig"; sourceTree = "<group>"; };
+		EEEF811BDF8F8F3683897E61 /* Pods_ios_quickblox_file_uploader_downloader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_quickblox_file_uploader_downloader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D1DDA7E5DCE4602BC00C098 /* libPods-ios_quickblox_file_uploader_downloader.a in Frameworks */,
+				845EBDA14BD5E8DB4E31E244 /* Pods_ios_quickblox_file_uploader_downloader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AB90C76CC70F96EA4A93E7C /* libPods-ios_quickblox_file_uploader_downloaderTests.a in Frameworks */,
+				10214BAA95FED56452A95A05 /* Pods_ios_quickblox_file_uploader_downloaderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,8 +156,8 @@
 		86CCA6D295FC70A40BCE7035 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				297D3BCFD1713432769136A4 /* libPods-ios_quickblox_file_uploader_downloader.a */,
-				7438FF2338A8CD8C1076CE06 /* libPods-ios_quickblox_file_uploader_downloaderTests.a */,
+				EEEF811BDF8F8F3683897E61 /* Pods_ios_quickblox_file_uploader_downloader.framework */,
+				0B74534DEEAA5778CA16CCCB /* Pods_ios_quickblox_file_uploader_downloaderTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -308,9 +308,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ios_quickblox_file_uploader_downloader/Pods-ios_quickblox_file_uploader_downloader-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ASIHTTPRequest/ASIHTTPRequest.framework",
+				"${BUILT_PRODUCTS_DIR}/MBFileDownloader/MBFileDownloader.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASIHTTPRequest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBFileDownloader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

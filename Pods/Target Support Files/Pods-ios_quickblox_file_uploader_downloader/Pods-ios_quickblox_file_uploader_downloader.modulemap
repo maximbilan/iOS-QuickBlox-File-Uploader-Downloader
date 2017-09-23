@@ -1,0 +1,6 @@
+framework module Pods_ios_quickblox_file_uploader_downloader {
+  umbrella header "Pods-ios_quickblox_file_uploader_downloader-umbrella.h"
+
+  export *
+  module * { export * }
+}
