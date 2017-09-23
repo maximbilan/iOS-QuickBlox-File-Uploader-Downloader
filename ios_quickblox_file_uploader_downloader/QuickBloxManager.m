@@ -42,9 +42,9 @@
 
 - (void)setup
 {
-	[QBApplication sharedApplication].applicationId = 21320;
-	[QBConnection registerServiceKey:@"mC3ZcEJO9Y4nXNJ"];
-	[QBConnection registerServiceSecret:@"vqOLNZ3KLqabbRA"];
+	[QBSettings setApplicationID:21320];
+	[QBSettings setAuthKey:@"mC3ZcEJO9Y4nXNJ"];
+	[QBSettings setAuthSecret:@"vqOLNZ3KLqabbRA"];
 	[QBSettings setAccountKey:@"vmVE4sGeFsrcaFoi9iCG"];
 	
 #ifndef DEBUG
