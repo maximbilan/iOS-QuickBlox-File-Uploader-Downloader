@@ -4,75 +4,29 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
-typedef enum QBConnectionZoneType{
-    QBConnectionZoneTypeAutomatic = 1, //Default. Endpoints are loaded from QuickBlox
-    QBConnectionZoneTypeProduction      = 2,
-    QBConnectionZoneTypeDevelopment     = 3,
-    QBConnectionZoneTypeStage           = 4
-} QBConnectionZoneType;
-
-@class QBRequest;
-@class QBResponse;
-@class QBSessionParameters;
+#import <Quickblox/QBNullability.h>
+#import <Quickblox/QBGeneric.h>
+#import "QBSettings.h"
 
 @interface QBConnection : NSObject
 
-#pragma mark - Settings methods
 /**
-* Setting API Key for Quickblox API
-*
-* @param serviceKey - NSString value of API Key.
-*/
-+ (void)registerServiceKey:(NSString *)serviceKey;
-
-/**
-* Setting API Secret for Quickblox API
-*
-* @param serviceSecret - NSString value of API Secret.
-*/
-+ (void)registerServiceSecret:(NSString *)serviceSecret;
-
-/**
-* Allow to change Services Zone to work with Development and Staging environments
-*
-* @param serviceZone - Service Zone. One from QBConnectionZoneType. Default - QBConnectionZoneTypeProduction
-*/
-+ (void)setServiceZone:(QBConnectionZoneType)serviceZone;
-
-/**
- *  Return current Service Zone
- *
- *  @param serviceZone - Service Zone. One from QBConnectionZoneType. Default - QBConnectionZoneTypeAutomatic
+ Re-creates background NSURLSession. This method must be called in 'application:handleEventsForBackgroundURLSession:completionHandler:' to make NSURLSessionDelegate delegates called.
  */
-+ (QBConnectionZoneType)currentServiceZone;
++ (void)restoreBackgroundSession;
 
 /**
-* A Boolean value indicating whether the manager is enabled.
-
-* If YES, the manager will change status bar network activity indicator according to network operation notifications it receives. The default value is NO.
-*/
-+ (void)setNetworkIndicatorManagerEnabled:(BOOL)enabled;
-
-/**
- A Boolean value indicating whether the network activity indicator is currently displayed in the status bar.
-*/
-+ (BOOL)isNetworkIndicatorVisible;
-
-/**
-* Allow to set custom domain for specific zone.
-*
-* @param apiDomain - Domain for service i.e. http://my_custom_domain.com. Possible to pass nil to return to default settings
-* @param zone - Service Zone. One from QBConnectionZoneType. Default - QBConnectionZoneTypeProduction
-*/
-+ (void)setApiDomain:(NSString *)apiDomain forServiceZone:(enum QBConnectionZoneType)zone;
-
-/**
- *  Returns Api Domain for current zone
- *
- *  @return NSString value of Api Domain
+ Must be set before request is fired. Sets a block to be executed when a download task has completed a download, as handled by the `NSURLSessionDownloadDelegate` method `URLSession:downloadTask:didFinishDownloadingToURL:`.
+ 
+ @param block A block object to be executed when a download task has completed. The block returns the URL the download should be moved to, and takes three arguments: the session, the download task, and the temporary location of the downloaded file. If the file manager encounters an error while attempting to move the temporary file to the destination, an `AFURLSessionDownloadTaskDidFailToMoveFileNotification` will be posted, with the download task as its object, and the user info of the error.
  */
-+ (NSString *)currentApiDomain;
++ (void)setDownloadTaskDidFinishDownloadingBlock:(QB_NULLABLE NSURL * QB_NULLABLE_S (^)( NSURLSession * QB_NONNULL_S session, NSURLSessionDownloadTask * QB_NONNULL_S downloadTask, NSURL * QB_NONNULL_S location))block;
+
+/**
+ Sets a block to be executed once all messages enqueued for a session have been delivered, as handled by the `NSURLSessionDataDelegate` method `URLSessionDidFinishEventsForBackgroundURLSession:`.
+ 
+ @param block A block object to be executed once all messages enqueued for a session have been delivered. The block has no return value and takes a single argument: the session.
+ */
++ (void)setURLSessionDidFinishBackgroundEventsBlock:(QB_NULLABLE void (^)(NSURLSession * QB_NULLABLE_S session))block;
 
 @end

@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Quickblox/QBNullability.h>
+#import <Quickblox/QBGeneric.h>
 #import "QBCEntity.h"
 #import "QBContentEnums.h"
 
@@ -24,8 +26,6 @@
 	NSUInteger size;                
 	NSString *UID; 
     NSDate *lastReadAccessTs;
-    NSUInteger lifetime;
-    NSUInteger refCount;
     NSString *tags;
     BOOL isPublic;
     BOOL isNew;
@@ -34,90 +34,88 @@
 }
 
 /** Content type in mime format */
-@property (nonatomic, retain) NSString* contentType;
+@property (nonatomic, retain, QB_NULLABLE_PROPERTY) NSString* contentType;
 
 /** File name */
-@property (nonatomic, retain) NSString* name;
+@property (nonatomic, retain, QB_NULLABLE_PROPERTY) NSString* name;
 
 /** Status of the File */
 @property (nonatomic) enum QBCBlobStatus status;
 
 /** Date when the file upload has been completed */
-@property (nonatomic, retain) NSDate* completedAt;
+@property (nonatomic, retain, QB_NULLABLE_PROPERTY) NSDate* completedAt;
 
 /** The size of file in bytes, readonly */
 @property (nonatomic) NSUInteger size;
 
 /** File unique identifier */
-@property (nonatomic, retain) NSString* UID;
+@property (nonatomic, retain, QB_NULLABLE_PROPERTY) NSString* UID;
 
 /** Last read file time */
-@property (nonatomic, retain) NSDate *lastReadAccessTs;
-
-/** Time that file will live after delete, in seconds 
- 
-  @warning Deprecated in 2.4. Will be removed in next releases.
- */
-@property (nonatomic) NSUInteger lifetime DEPRECATED_MSG_ATTRIBUTE("will be removed in next releases");
+@property (nonatomic, retain, QB_NULLABLE_PROPERTY) NSDate *lastReadAccessTs;
 
 /** An instance of  BlobObjectAccess */
-@property (nonatomic, retain) QBCBlobObjectAccess *blobObjectAccess;
-
-/** File's links count 
- 
- @warning Deprecated in 2.4. Will be removed in next releases.
- */
-@property (nonatomic) NSUInteger refCount DEPRECATED_MSG_ATTRIBUTE("will be removed in next releases");
+@property (nonatomic, retain, QB_NULLABLE_PROPERTY) QBCBlobObjectAccess *blobObjectAccess;
 
 /** Coma separated string with file's tags */
-@property (nonatomic, retain) NSString *tags;
+@property (nonatomic, retain, QB_NULLABLE_PROPERTY) NSString *tags;
 
 /** File's visibility */
 @property (nonatomic) BOOL isPublic;
 
-/** Set as YES if you want to updated blob's file */
+/** Set as YES if you want to update blob's file */
 @property (nonatomic) BOOL isNew;
 
 /** Create new blob
  @return New instance of QBCBlob
  */
-+ (QBCBlob *)blob;
-
++ (QB_NONNULL QBCBlob *)blob;
 
 /** Get file's public url (available within Internet), if blob is public.
  @return Public url to file
  */
-- (NSString *)publicUrl;
+- (QB_NULLABLE NSString *)publicUrl;
 
-/** Get file's public url (available within Internet) by UID.
- 
- @warning Deprecated in 2.3. Use '+[QBCBlob publicUrlForID:]' instead.
- 
- @return Public url to file
+/**
+ *  Get file's public url (available within Internet), if blob is public.
+ *
+ *  @param fileUID File unique identifier.
+ *
+ *  @return Public url to file.
  */
-+ (NSString *)publicUrlForUID:(NSString *)UID __attribute__((deprecated("use '+[QBCBlob publicUrlForID:]' instead.")));
++ (QB_NULLABLE NSString *)publicUrlForFileUID:(QB_NONNULL NSString *)fileUID;
 
 /** Get file's public url (available within Internet) by ID.
+ @warning *Deprecated in 2.6.1.* Use 'publicUrlForFileUID:' instead.
  @return Public url to file
  */
-+ (NSString *)publicUrlForID:(NSUInteger)ID;
-
++ (QB_NULLABLE NSString *)publicUrlForID:(NSUInteger)ID DEPRECATED_MSG_ATTRIBUTE("Deprecated in 2.6.1. Use 'publicUrlForFileUID:' instead.");
 
 /** Get file's private url (available only with QuickBlox token), if blob is private.
  @return Private url to file
  */
-- (NSString *)privateUrl;
+- (QB_NULLABLE NSString *)privateUrl;
 
 /** Get file's private url (available only with QuickBlox token) by ID.
+ @warning *Deprecated in 2.6.1.* Use 'privateUrlForFileUID:' instead.
  @return Private url to file
  */
-+ (NSString *)privateUrlForID:(NSUInteger)ID;
++ (QB_NULLABLE NSString *)privateUrlForID:(NSUInteger)ID DEPRECATED_MSG_ATTRIBUTE("Deprecated in 2.6.1. Use 'privateUrlForFileUID:' instead.");
+;
 
+/**
+ *  Get file's private url (available only with QuickBlox token), if blob is private.
+ *
+ *  @param fileUID File unique identifier.
+ *
+ *  @return Private url to file.
+ */
++ (QB_NULLABLE NSString *)privateUrlForFileUID:(QB_NONNULL NSString *)fileUID;
 
 #pragma mark -
 #pragma mark Converters
 
-+ (enum QBCBlobStatus)statusFromString:(NSString*)status;
-+ (NSString*)statusToString:(enum QBCBlobStatus)status;
++ (enum QBCBlobStatus)statusFromString:(QB_NULLABLE NSString *)status;
++ (QB_NULLABLE NSString *)statusToString:(enum QBCBlobStatus)status;
 
 @end
