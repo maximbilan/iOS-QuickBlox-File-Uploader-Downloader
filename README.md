@@ -213,7 +213,7 @@ That’s all.
  @param errorBlock Block with response instance if request failed
  @return An instance of QBRequest. Use this instance to cancel the operation.
  */
-+ (QBRequest *)uploadFile:(NSData *)data
+&#43; (QBRequest *)uploadFile:(NSData *)data
       blobWithWriteAccess:(QBCBlob *)blobWithWriteAccess
              successBlock:(void(^)(QBResponse *response))successBlock
               statusBlock:(QBRequestStatusUpdateBlock)statusBlock
@@ -231,7 +231,7 @@ That’s all.
  @param errorBlock Block with response instance if request failed
  @return An instance of QBRequest. Use this instance to cancel the operation.
  */
-+ (QBRequest *)downloadFileWithUID:(NSString *)UID
+&#43; (QBRequest *)downloadFileWithUID:(NSString *)UID
                       successBlock:(void(^)(QBResponse *response, NSData *fileData))successBlock
                        statusBlock:(QBRequestStatusUpdateBlock)statusBlock
                         errorBlock:(void(^)(QBResponse *response))errorBlock;
@@ -251,7 +251,7 @@ That’s all.
  @param errorBlock Block with response instance if request failed
  @return An instance of QBRequest. Use this instance to cancel the operation.
  */
-+ (QBRequest *)TUploadFile:(NSData*)data
+ &#43; (QBRequest *)TUploadFile:(NSData*)data
                   fileName:(NSString*)fileName
                contentType:(NSString*)contentType
                   isPublic:(BOOL)isPublic
@@ -269,7 +269,7 @@ That’s all.
  @return An instance of QBRequest. Use this instance to cancel the operation.
  */
 
-+ (QBRequest *)TDownloadFileWithBlobID:(NSUInteger)blobID
+&#43; (QBRequest *)TDownloadFileWithBlobID:(NSUInteger)blobID
                           successBlock:(void(^)(QBResponse *response, NSData *fileData))successBlock
                            statusBlock:(QBRequestStatusUpdateBlock)statusBlock
                             errorBlock:(void(^)(QBResponse *response))errorBlock;
