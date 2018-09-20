@@ -86,7 +86,7 @@
 	[[QuickBloxManager quickBloxManager] uploadFiles:@[path1, path2] filenames:@[@"1.jpg", @"2.jpg"] success:^{
 		[_self stopWaiting];
 	} update:^(float percentCompletion) {
-		[_progressView setProgress:percentCompletion animated:YES];
+		[_self.progressView setProgress:percentCompletion animated:YES];
 	} failure:^(NSError *error) {
 		[_self stopWaiting];
 	}];
@@ -101,7 +101,7 @@
 		NSLog(@"%@", path);
 		[_self stopWaiting];
 	} update:^(float percentCompletion) {
-		[_progressView setProgress:percentCompletion animated:YES];
+		[_self.progressView setProgress:percentCompletion animated:YES];
 	} failure:^(NSError *error) {
 		[_self stopWaiting];
 	}];

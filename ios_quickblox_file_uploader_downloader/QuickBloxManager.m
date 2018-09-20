@@ -14,9 +14,8 @@
 #import "MBFileDownloader.h"
 
 @interface QuickBloxManager ()
-{
-	QBUUser *currentUser;
-}
+
+@property (nonatomic, strong, readwrite) QBUUser *currentUser;
 
 @property (nonatomic, readwrite) NSString *token;
 @property (nonatomic, readwrite) BOOL isLogged;
@@ -63,11 +62,11 @@
 	
 	WEAK(self);
 	[QBRequest signUp:qbUser successBlock:^(QBResponse *response, QBUUser *user) {
-		currentUser = user;
-		currentUser.login = qbUser.login;
-		currentUser.password = qbUser.password;
+		_self.currentUser = user;
+		_self.currentUser.login = qbUser.login;
+		_self.currentUser.password = qbUser.password;
 		NSLog(@"%@", response);
-		[_self logInUserWithLogin:currentUser.login password:currentUser.password success:success failure:failure];
+		[_self logInUserWithLogin:_self.currentUser.login password:_self.currentUser.password success:success failure:failure];
 	} errorBlock:^(QBResponse *response) {
 		NSLog(@"%@", response);
 		failure(response.error.error);
@@ -78,14 +77,14 @@
 {
 	WEAK(self);
 	
-	currentUser = [QBUUser user];
-	currentUser.login = login;
-	currentUser.password = password;
+	self.currentUser = [QBUUser user];
+	self.currentUser.login = login;
+	self.currentUser.password = password;
 	
 	[QBRequest logInWithUserLogin:login password:password successBlock:^(QBResponse *response, QBUUser *user) {
-		currentUser.ID = user.ID;
-		currentUser.login = login;
-		currentUser.password = password;
+		_self.currentUser.ID = user.ID;
+		_self.currentUser.login = login;
+		_self.currentUser.password = password;
 		_self.isLogged = YES;
 		//_token = [QBBaseModule sharedModule].token;
 		
@@ -101,14 +100,14 @@
 		WEAK(self);
 		[QBRequest logOutWithSuccessBlock:^(QBResponse *response) {
 			_self.isLogged = NO;
-			currentUser = nil;
+			_self.currentUser = nil;
 			success();
 		} errorBlock:^(QBResponse *response) {
 			failure(response.error.error);
 		}];
 	}
 	else {
-		currentUser = nil;
+		self.currentUser = nil;
 		success();
 	}
 }
@@ -280,12 +279,12 @@
 
 - (NSString *)login
 {
-	return currentUser.login;
+	return self.currentUser.login;
 }
 
 - (NSString *)password
 {
-	return currentUser.password;
+	return self.currentUser.password;
 }
 
 @end
