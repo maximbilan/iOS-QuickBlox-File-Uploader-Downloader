@@ -112,7 +112,7 @@ ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:blob.blobO
 [request startAsynchronous];
 </pre>
 
-And after that we should set file status to ‘<i>Complete</i>’. If the specified file size does not match to the actual, the actual will be set.
+And after that we should set the file status to ‘<i>Complete</i>’. If the specified file size does not match to the actual, the actual will be set.
 
 <a href="http://curl.haxx.se">Curl</a> request:
 
@@ -180,7 +180,7 @@ Response:
 }];
 </pre>
 
-For simple way to download file use <a href="https://github.com/maximbilan/MBFileDownloader">MBFileDownloader</a>:
+For a simple way to download a file use <a href="https://github.com/maximbilan/MBFileDownloader">MBFileDownloader</a>:
 
 <pre>
 MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL URLWithString:objectAccess.urlWithParams] toFilePath:filePath];
@@ -196,7 +196,7 @@ MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL 
 
 That’s all.
 
-<b>I provide sample in this repository, full process of uploading and downloading. Please use for free.</b>
+<b>I provide a sample in this repository, the full process of uploading and downloading. Please use for free.</b>
 
 <h3>Methods from QuickBlox iOS SDK</h3>
 <pre>
