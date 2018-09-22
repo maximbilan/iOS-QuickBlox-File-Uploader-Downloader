@@ -180,7 +180,7 @@ Response:
 }];
 </pre>
 
-For a simple way to download a file use <a href="https://github.com/maximbilan/MBFileDownloader">MBFileDownloader</a>:
+For a simple way to download a file using <a href="https://github.com/maximbilan/MBFileDownloader">MBFileDownloader</a>:
 
 <pre>
 MBFileDownloader *fileDownloader = [[MBFileDownloader alloc] initWithURL:[NSURL URLWithString:objectAccess.urlWithParams] toFilePath:filePath];
